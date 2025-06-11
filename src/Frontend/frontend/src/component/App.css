@@ -1,0 +1,319 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #f0f0f7;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+  user-select: none;
+}
+
+.app {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 50px 60px;
+  width: 480px;
+  box-shadow:
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    0 0 15px rgba(255, 255, 255, 0.15);
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+  color: #eaeaea;
+  user-select: text;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin-bottom: 35px;
+  font-weight: 800;
+  font-size: 2.8rem;
+  letter-spacing: 3px;
+  color: #e3e3f1;
+  text-shadow: 0 0 8px #6a80ff;
+}
+
+.date-picker-container {
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: #b8c1ff;
+}
+
+.date-picker-input {
+  padding: 10px 14px;
+  border-radius: 15px;
+  border: none;
+  font-size: 16px;
+  width: 160px;
+  color: #1e293b;
+  font-weight: 600;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.date-picker-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px #758bfd;
+  background-color: #fff;
+}
+
+/* React-datepicker calendar */
+.calendar-style {
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 50, 0.4) !important;
+  background: #1b2a48 !important;
+  color: #f0f0f7 !important;
+  font-weight: 600 !important;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.input-field {
+  margin: 10px 0;
+  padding: 12px 20px;
+  width: 100%;
+  border-radius: 18px;
+  font-size: 17px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #f0f0f7;
+  font-weight: 600;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.input-field::placeholder {
+  color: #d1d1e9;
+}
+
+.input-field:focus {
+  outline: none;
+  background: #ffffffee;
+  color: #111827;
+  box-shadow: 0 0 20px #758bfd;
+}
+
+.default-task-label {
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d1d1e9;
+  transition: color 0.3s ease;
+}
+
+.default-task-label:hover {
+  color: #a1aaff;
+}
+
+.form input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.btn-add {
+  margin-top: 22px;
+  padding: 14px 0;
+  background: linear-gradient(90deg, #6a7cff, #758bfd);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 22px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(107, 115, 255, 0.6);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  user-select: none;
+}
+
+.btn-add:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-add:not(:disabled):hover {
+  background: linear-gradient(90deg, #8395ff, #a0a8ff);
+  box-shadow: 0 10px 30px rgba(134, 146, 255, 0.9);
+}
+
+/* Task List */
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.task-item {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 14px 0;
+  padding: 20px 24px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(110, 110, 255, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+  cursor: default;
+}
+
+.task-item:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  opacity: 0.7;
+  color: #a3a3c2;
+}
+
+.task-content {
+  flex: 1;
+  text-align: left;
+}
+
+.task-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #dce1ff;
+  margin-bottom: 6px;
+  user-select: text;
+}
+
+.task-desc {
+  font-size: 0.9rem;
+  color: #c3c8e8;
+  margin: 0;
+  user-select: text;
+}
+
+.default-tag {
+  display: inline-block;
+  background: #758bfdcc;
+  color: #fff;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  margin-top: 6px;
+  user-select: none;
+  font-weight: 600;
+  box-shadow: 0 0 8px #758bfd99;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  margin-left: 20px;
+}
+
+button.btn-done,
+button.btn-delete {
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.btn-done {
+  background: #758bfd;
+  color: #fff;
+  box-shadow: 0 6px 18px #647bffaa;
+}
+
+button.btn-done:hover:not(:disabled) {
+  background: #556ce6;
+  box-shadow: 0 8px 22px #415ac9cc;
+}
+
+button.btn-delete {
+  background: #e66464;
+  color: #fff;
+  box-shadow: 0 6px 18px #ff6464aa;
+}
+
+button.btn-delete:hover:not(:disabled) {
+  background: #b74141;
+  box-shadow: 0 8px 22px #992e2ecc;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+.error-message {
+  margin-top: -25px;
+  margin-bottom: 20px;
+  color: #ff7b7b;
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.loading-message {
+  margin-top: 25px;
+  font-style: italic;
+  color: #b0b8ff;
+}
+
+/* Scrollbar */
+.task-list::-webkit-scrollbar {
+  width: 8px;
+}
+.task-list::-webkit-scrollbar-thumb {
+  background: #758bfdaa;
+  border-radius: 10px;
+}
+.task-list::-webkit-scrollbar-thumb:hover {
+  background: #556ce6cc;
+}
+
+/* Accessibility focus */
+.task-item:focus {
+  outline: 3px solid #758bfd;
+  outline-offset: 2px;
+  background: rgba(117, 136, 253, 0.25);
+}
